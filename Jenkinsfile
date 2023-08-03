@@ -10,19 +10,9 @@ pipeline {
         stage('Adding Parameter')
          steps {
            script {
-                    
-                  env = build.getEnvironment(listener)
-                  environment = env.get('environment')
-                  filename = env.get('filename')
-
-
-                   def builder = new JsonBuilder()
-                   builder environment: environment, filename: filename
-                   json = builder.toPrettyString()
-
-
-                   println json
-                   new File(build.workspace.toString() + "\\job.json").write(json)
+                  jsonfile =readJSON file: 'job.json', returnPojo: true
+                  jsonfile['environment'] = 'ENV2'
+                  writeJSON file: 'job.json', json: jsonfile
            }
          }
        }
