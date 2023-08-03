@@ -1,8 +1,6 @@
 pipeline {
   agent any
 
-  parameters {
-    string(defaultValue: "abc", description: 'Environment', name: 'ENV')
 
  stages {
        stage('checkout') {
@@ -14,7 +12,7 @@ pipeline {
          steps {
            script {
                   jsonfile =readJSON file: 'job.json', returnPojo: true
-                  jsonfile['environment'] = ${ENV}
+                  jsonfile['environment'] = 'Arfa'
                   writeJSON file: 'job.json', json: jsonfile
            }
          }
