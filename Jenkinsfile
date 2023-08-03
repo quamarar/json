@@ -7,7 +7,7 @@ pipeline {
            git 'https://github.com/quamarar/json.git'
          }
         }
-        stage('Adding Parameter')
+        stage('Adding Parameter') {
          steps {
            script {
                   jsonfile =readJSON file: 'job.json', returnPojo: true
@@ -16,4 +16,5 @@ pipeline {
            }
          }
        }
-     }   
+     }  
+}
