@@ -8,7 +8,9 @@ environment {
       s3_output_bucket_name_statestore = "statestore_bucket"
   }
 
-
+parameters {
+  choice(name: 'Algo-list', choices:[LINEARREGRESSION, XGBOOST], description:'Pick the Algo')
+}
  stages {
        stage('checkout') {
          steps {
@@ -24,6 +26,7 @@ environment {
                   jsonfile['s3_output_bucket_name_lineage'] = "${s3_output_bucket_name_lineage}"
                   jsonfile['s3_output_bucket_name_statestore'] = "${s3_output_bucket_name_statestore}"
                   jsonfile['excecution_Timetstamp'] = "${BUILD_TIMESTAMP}"
+                  jsonfile['Algo-list'] = "${Algo-list}"
                   writeJSON file: 'input.json', json: jsonfile
            }
          }
