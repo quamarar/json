@@ -11,6 +11,7 @@ environment {
 parameters {
   choice(name: 'Algo-list', choices:['LINEARREGRESSION', 'XGBOOST'], description:'Pick the Algo')
 }
+  
  stages {
        stage('checkout') {
          steps {
