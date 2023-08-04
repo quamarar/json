@@ -4,6 +4,7 @@
     "s3_output_bucket_name_evaluation": "evaluation_bucket",
     "s3_output_bucket_name_lineage": "lineage_bucket",
     "s3_output_bucket_name_statestore": "statestore_bucket",
-    "excecution_Timetstamp": "BUILD_TIMESTAMP"
+    "excecution_Timetstamp": "BUILD_TIMESTAMP",
+    "Algo-list": ["LINEARREGRESSION" , "XGBOOST"]
     
 }
