@@ -19,10 +19,10 @@ pipeline {
          steps {
            script {
                   jsonfile =readJSON file: 'input.json', returnPojo: true
-                  jsonfile['execution_month'] = "${execution_month}",
-                  jsonfile['s3_output_bucket_name_training'] = "${s3_output_bucket_name_training}",
-                  jsonfile['s3_output_bucket_name_evaluation'] = "${s3_output_bucket_name_evaluation}",
-                  jsonfile['s3_output_bucket_name_lineage'] = "${s3_output_bucket_name_lineage}",
+                  jsonfile['execution_month'] = "${execution_month}"
+                  jsonfile['s3_output_bucket_name_training'] = "${s3_output_bucket_name_training}"
+                  jsonfile['s3_output_bucket_name_evaluation'] = "${s3_output_bucket_name_evaluation}"
+                  jsonfile['s3_output_bucket_name_lineage'] = "${s3_output_bucket_name_lineage}"
                   jsonfile['s3_output_bucket_name_statestore'] = "${s3_output_bucket_name_statestore}"
                   writeJSON file: 'input.json', json: jsonfile
            }
