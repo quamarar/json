@@ -9,7 +9,7 @@ environment {
   }
 
 parameters {
-  choice(name: 'Algo-list', choices:['LINEARREGRESSION', 'XGBOOST'], description:'Pick the Algo')
+  choice(name: 'Algolist', choices:['LINEARREGRESSION', 'XGBOOST'], description:'Pick the Algo')
 }
   
  stages {
@@ -27,7 +27,7 @@ parameters {
                   jsonfile['s3_output_bucket_name_lineage'] = "${s3_output_bucket_name_lineage}"
                   jsonfile['s3_output_bucket_name_statestore'] = "${s3_output_bucket_name_statestore}"
                   jsonfile['excecution_Timetstamp'] = "${BUILD_TIMESTAMP}"
-                  jsonfile['Algo-list'] = "${Algo-list}"
+                  jsonfile['Algo-list'] = "${Algolist}"
                   writeJSON file: 'input.json', json: jsonfile
            }
          }
