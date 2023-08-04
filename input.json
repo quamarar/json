@@ -1,7 +1,5 @@
 {
-    "execution_year": 2023,
-    "execution_month": "Aug",
-    "execution_day":  4,
+
     "s3_output_bucket_name_training": "training_bucket",
     "s3_output_bucket_name_evaluation": "evaluation_bucket",
     "s3_output_bucket_name_lineage": "lineage_bucket",
