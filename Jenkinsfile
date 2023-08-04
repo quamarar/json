@@ -30,7 +30,7 @@ pipeline {
        }
       stage('Invoking step function'){
         steps{
-         sh 'aws stepfunctions start-execution --state-machine-arn arn:aws:states:us-east-1:836350033173:stateMachine:BatchJobNotificationStateMachine-lPdtYhDEHlG0 --name BatchJobNotificationStateMachine-lPdtYhDEHlG0 --cli-input-json file://input.json --region us-east-1'
+         sh 'aws stepfunctions start-execution --state-machine-arn arn:aws:states:us-east-1:836350033173:stateMachine:BatchJobNotificationStateMachine-lPdtYhDEHlG0  --input "$(jq -R . input.json --raw-output)" --region us-east-1'
      }  
   }
  }
