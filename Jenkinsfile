@@ -14,7 +14,7 @@ pipeline {
          steps {
            script {
                   jsonfile =readJSON file: 'input.json', returnPojo: true
-                  jsonfile['execution_month'] = ${params.execution_month}"
+                  jsonfile['execution_month'] = ${params.execution_month}
                   writeJSON file: 'input.json', json: jsonfile
            }
          }
