@@ -12,7 +12,7 @@ pipeline {
          steps {
            script {
                   jsonfile =readJSON file: 'input.json', returnPojo: true
-                  jsonfile['environment'] = 'Arfa'
+                  jsonfile['execution_month'] = 'Sep'
                   writeJSON file: 'input.json', json: jsonfile
            }
          }
