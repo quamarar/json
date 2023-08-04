@@ -11,9 +11,9 @@ pipeline {
         stage('Adding Parameter') {
          steps {
            script {
-                  jsonfile =readJSON file: 'job.json', returnPojo: true
+                  jsonfile =readJSON file: 'input.json', returnPojo: true
                   jsonfile['environment'] = 'Arfa'
-                  writeJSON file: 'job.json', json: jsonfile
+                  writeJSON file: 'input.json', json: jsonfile
            }
          }
        }
