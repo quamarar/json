@@ -3,6 +3,7 @@ pipeline {
 
   parameters {
         string(name: 'execution_month', defaultValue: 'August', description: 'Month of excecution')
+  }
 
  stages {
        stage('checkout') {
