@@ -7,6 +7,7 @@ pipeline {
 environment {
       s3_bucket_name_internal = "msil-poc-apsouth1-internal"
       s3_bucket_name_shared = "msil-poc-apsouth1-shared"
+      excecution_time = "${BUILD_TIMESTAMP}"
      
   }
 
@@ -24,7 +25,7 @@ environment {
                script {
                       newdate = "date +%Y-%m-%d"
                }
-                  sh 'echo ${newdate}'
+                   'echo ${newdate}'
             }
         }
     
