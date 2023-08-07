@@ -4,7 +4,7 @@
     "s3_bucket_name_shared": "msil-poc-apsouth1-shared",
     "year": 2023,  
     "month": 09,
-    "day" : 10,
+    "day" : 15,
     "AWS_batch_job_definition_arn": "string",
     "mapping_json_s3_path": "string",
     "commit_id": "string",
