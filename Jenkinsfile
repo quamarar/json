@@ -30,7 +30,7 @@ environment {
                   jsonfile['excecution_Timetstamp'] = "${BUILD_TIMESTAMP}"
                   writeJSON file: 'input.json', json: jsonfile
            }
-              sh  'date +%Y-%m-%d | sed -e 's/-/ /g' | awk '{print $2}''
+              sh  'date +%Y-%m-%d | tr "-" " " | awk '{print $2}''
                
          }
        }
