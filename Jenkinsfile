@@ -27,7 +27,9 @@ environment {
                   jsonfile =readJSON file: 'input.json', returnPojo: true
                   jsonfile['s3_bucket_name_internal'] = "${s3_bucket_name_internal}"
                   jsonfile['s3_bucket_name_shared'] = "${s3_bucket_name_shared}"
-                  jsonfile['excecution_Timetstamp'] = "${Month}"
+                  jsonfile ['year'] = "${Year}"
+                  jsonfile['month'] = "${Month}"
+                  jsonfile['day'] = "{Day}"
                   writeJSON file: 'input.json', json: jsonfile
            }     
          }
