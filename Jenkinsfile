@@ -29,7 +29,7 @@ environment {
                   jsonfile['s3_bucket_name_shared'] = "${s3_bucket_name_shared}"
                   jsonfile ['year'] = "${Year}"
                   jsonfile['month'] = "${Month}"
-                  jsonfile['day'] = "{Day}"
+                  jsonfile['day'] = "${Day}"
                   writeJSON file: 'input.json', json: jsonfile
            }     
          }
