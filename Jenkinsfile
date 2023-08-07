@@ -1,6 +1,4 @@
 
-import java.time.*
-import java.time.format.DateTimeFormatter
 
 
 pipeline {
@@ -22,11 +20,7 @@ environment {
 
         stage('Hello') {
             steps {
-                script{
-                def date = new Date()
-                sdf = new SimpleDateFormat("MM/dd/yyyy")
-                println(sdf.format(date))
-                }   
+                sh 'date +%Y-%m-%d | sed -e 's/-/ /g' | awk {"print $1"}'
             }
         }
     
