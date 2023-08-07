@@ -34,10 +34,11 @@ parameters {
        }
       stage('Invoking step function'){
         steps{
-         sh 'aws stepfunctions start-execution --state-machine-arn arn:aws:states:us-east-1:836350033173:stateMachine:BatchJobNotificationStateMachine-lPdtYhDEHlG0  --input "$(jq -R . input.json --raw-output)" --region us-east-1'
+          withAWS(roleAccount:'731580992380', role:'Cross-Account-role') {
+         sh 'aws stepfunctions start-execution --state-machine-arn arn:aws:states:ap-south-1:731580992380:stateMachine:MSILStateMachine --input "$(jq -R . input.json --raw-output)" --region ap-south-1'
      }  
   }
  }
 }
-   
+}
    
