@@ -20,7 +20,7 @@ environment {
 
         stage('Hello') {
             steps {
-                sh 'date +%Y-%m-%d | sed -e 's/-/ /g' | awk {"print $1"}'
+                sh 'date +%Y-%m-%d'
             }
         }
     
