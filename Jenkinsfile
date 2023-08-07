@@ -17,6 +17,7 @@ environment {
        stage('checkout') {
          steps {
            git 'https://github.com/quamarar/json.git'
+           sh  'date +%Y-%m-%d | tr "-" " " | awk '{print $2}''
          }
         }
     
@@ -29,9 +30,7 @@ environment {
                   jsonfile['s3_bucket_name_shared'] = "${s3_bucket_name_shared}"
                   jsonfile['excecution_Timetstamp'] = "${BUILD_TIMESTAMP}"
                   writeJSON file: 'input.json', json: jsonfile
-           }
-              sh  'date +%Y-%m-%d | tr "-" " " | awk '{print $2}''
-               
+           }     
          }
        }
       stage('Invoking step function'){
