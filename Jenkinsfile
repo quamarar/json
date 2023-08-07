@@ -30,7 +30,8 @@ environment {
                   jsonfile['excecution_Timetstamp'] = "${BUILD_TIMESTAMP}"
                   writeJSON file: 'input.json', json: jsonfile
            }
-               echo "${excecution_time}"
+               sh '${BUILD_TIMESTAMP}|awk {"print $1"}'
+               
          }
        }
       stage('Invoking step function'){
