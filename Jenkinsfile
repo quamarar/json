@@ -22,9 +22,9 @@ environment {
         stage('Hello') {
             steps {
                script {
-                      date = "date +%Y-%m-%d"
+                      newdate = "date +%Y-%m-%d"
                }
-                  sh 'echo ${date}'
+                  sh 'echo ${newdate}'
             }
         }
     
