@@ -2,25 +2,11 @@ pipeline {
   agent any
 
 environment {
-      s3_output_bucket_name_training = "training_bucket"
-      s3_output_bucket_name_evaluation = "evaluation_bucket"
-      s3_output_bucket_name_lineage = "lineage_bucket"
-      s3_output_bucket_name_statestore = "statestore_bucket"
+      s3_bucket_name_internal = "msil-poc-apsouth1-internal"
+      s3_bucket_name_shared = "msil-poc-apsouth1-shared"
   }
 
 
-  parameters {
-    extendedChoice( 
-        defaultValue: 'LINEARREGRESSION,XGBOOST', 
-        description: 'Pick the Algo', 
-        multiSelectDelimiter: ',', 
-        name: 'ALGO_CHOICE', 
-        quoteValue: false, 
-        saveJSONParameterToFile: false, 
-        type: 'PT_CHECKBOX', 
-        value: 'LINEARREGRESSION,XGBOOST,SVR,RANDOMFOREST,DECISIONTREE,ARIMA,HUBERREGRESSION', 
-        visibleItemCount: 10)
-    }
   
  stages {
        stage('checkout') {
@@ -32,12 +18,9 @@ environment {
          steps {
            script {
                   jsonfile =readJSON file: 'input.json', returnPojo: true
-                  jsonfile['s3_output_bucket_name_training'] = "${s3_output_bucket_name_training}"
-                  jsonfile['s3_output_bucket_name_evaluation'] = "${s3_output_bucket_name_evaluation}"
-                  jsonfile['s3_output_bucket_name_lineage'] = "${s3_output_bucket_name_lineage}"
-                  jsonfile['s3_output_bucket_name_statestore'] = "${s3_output_bucket_name_statestore}"
+                  jsonfile['s3_bucket_name_internal'] = "${s3_bucket_name_internal}"
+                  jsonfile['s3_bucket_name_shared'] = "${s3_bucket_name_shared}"
                   jsonfile['excecution_Timetstamp'] = "${BUILD_TIMESTAMP}"
-                  jsonfile['Algo-list'] = "${ALGO_CHOICE}"
                   writeJSON file: 'input.json', json: jsonfile
            }
          }
