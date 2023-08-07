@@ -7,7 +7,6 @@ pipeline {
 environment {
       s3_bucket_name_internal = "msil-poc-apsouth1-internal"
       s3_bucket_name_shared = "msil-poc-apsouth1-shared"
-      date = 
      
   }
 
@@ -22,7 +21,10 @@ environment {
 
         stage('Hello') {
             steps {
-                sh 'date +%Y-%m-%d'
+               script {
+                      date = "date +%Y-%m-%d"
+               }
+                  sh 'echo ${date}'
             }
         }
     
