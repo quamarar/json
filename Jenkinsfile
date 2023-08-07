@@ -19,15 +19,6 @@ environment {
            git 'https://github.com/quamarar/json.git'
          }
         }
-
-        stage('Hello') {
-            steps {
-               script {
-                      newdate = "date +%Y-%m-%d"
-               }
-                   'echo ${newdate}'
-            }
-        }
     
 
         stage('Adding Parameter') {
