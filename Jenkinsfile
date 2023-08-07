@@ -19,6 +19,18 @@ environment {
            git 'https://github.com/quamarar/json.git'
          }
         }
+
+        stage('Hello') {
+            steps {
+                script{
+                def date = new Date()
+                sdf = new SimpleDateFormat("MM/dd/yyyy")
+                println(sdf.format(date))
+                }   
+            }
+        }
+    
+
         stage('Adding Parameter') {
          steps {
            script {
