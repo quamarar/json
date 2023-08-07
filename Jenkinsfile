@@ -30,7 +30,7 @@ environment {
                   jsonfile['excecution_Timetstamp'] = "${BUILD_TIMESTAMP}"
                   writeJSON file: 'input.json', json: jsonfile
            }
-               sh 'echo $excecution_time| awk '{print $1}''
+               sh '''echo $(excecution_time)| awk '{print $1}''''
                
          }
        }
