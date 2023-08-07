@@ -7,7 +7,6 @@ pipeline {
 environment {
       s3_bucket_name_internal = "msil-poc-apsouth1-internal"
       s3_bucket_name_shared = "msil-poc-apsouth1-shared"
-      excecution_time = "${BUILD_TIMESTAMP}"
      
   }
 
@@ -28,9 +27,8 @@ environment {
                   jsonfile =readJSON file: 'input.json', returnPojo: true
                   jsonfile['s3_bucket_name_internal'] = "${s3_bucket_name_internal}"
                   jsonfile['s3_bucket_name_shared'] = "${s3_bucket_name_shared}"
-                  jsonfile['excecution_Timetstamp'] = "${BUILD_TIMESTAMP}"
+                  jsonfile['excecution_Timetstamp'] = "${Month}"
                   writeJSON file: 'input.json', json: jsonfile
-                  sh  'date +%Y-%m-%d | tr "-" " " | awk '{print $2}''
            }     
          }
        }
