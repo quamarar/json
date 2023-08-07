@@ -1,10 +1,12 @@
 {
+    "git_commit_url": "url",
+    "s3_bucket_name_internal": "msil-poc-apsouth1-internal",
+    "s3_bucket_name_shared": "msil-poc-apsouth1-shared",
+    "year": 2023,  
+    "month": 08,
+    "AWS_batch_job_definition_arn": "string",
+    "mapping_json_s3_path": "string",
+    "commit_id": "string",
+    "use_case_name": "MVP",
 
-    "s3_output_bucket_name_training": "training_bucket",
-    "s3_output_bucket_name_evaluation": "evaluation_bucket",
-    "s3_output_bucket_name_lineage": "lineage_bucket",
-    "s3_output_bucket_name_statestore": "statestore_bucket",
-    "excecution_Timetstamp": "BUILD_TIMESTAMP",
-    "Algo-list": ["LINEARREGRESSION" , "XGBOOST", "SVR", "RANDOMFOREST", "DECISIONTREE", "ARIMA", "HUBERREGRESSION" ]
-    
 }
