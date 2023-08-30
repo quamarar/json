@@ -7,6 +7,7 @@ pipeline {
 environment {
       s3_bucket_name_internal = "msil-poc-apsouth1-internal"
       s3_bucket_name_shared = "msil-poc-apsouth1-shared"
+      year = "${Year}"
      
   }
 
@@ -27,7 +28,7 @@ environment {
                     def amap = ['athena_pred_or_eval_table_name': 'evaluation','athenadb_name': 'default','athenadb_debug_table_name': 'debug',
                                 'athenadb_evaluation_summary_table_name': 'model_eval_summary','train_statetable_name': 'template-dapm-dev-apsouth1-state-table',
                                 'train_inputtable_name': 'template-dapm-dev-apsouth1-input-table','train_metatable_name': 'template-dapm-dev-apsouth1-meta-table',
-                                's3_bucket_name_internal': 'template-dapm-dev-apsouth1-internal','s3_bucket_name_shared': 'template-dapm-dev-apsouth1-shared',
+                                's3_bucket_name_internal': 'template-dapm-dev-apsouth1-internal','s3_bucket_name_shared': 'template-dapm-dev-apsouth1-shared','year': 'env.year',
                                 'mapping_json_S3_path': 's3://template-dapm-dev-apsouth1-internal/mapping_json/mapping_json.json','region': 'ap-south-1',
                                  'use_case_name': 'DCP', 'aws_batch_job_queue': 'arn:aws:batch:ap-south-1:731580992380:job-queue/template-dapm-dev-apsouth1-dapf-batch-training-job-queue',
                                 'aws_batch_job_name': 'aws_demo_batch_run','athenadb_metadata_table_name': 'meta','ssm_training_complete_status': '/template-dapm-dev-apsouth1/training_complete_status',
@@ -37,7 +38,7 @@ environment {
                    writeJSON file: 'data.json', json: amap
                    def read = readJSON file: 'data.json'
 
-                   assert read.year == "${Year}"
+                   assert read.year == 'env.year'
                    assert read.athena_pred_or_eval_table_name == 'evaluation'
                    assert read.athenadb_name == 'default'
                    assert read.athenadb_debug_table_name == 'debug'
