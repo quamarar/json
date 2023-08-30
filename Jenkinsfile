@@ -19,28 +19,25 @@ environment {
            
          }
         }
-    
+
 
         stage('Adding Parameter') {
          steps {
            script {
-                  jsonfile =readJSON file: 'input.json', returnPojo: true
-                  jsonfile['s3_bucket_name_internal'] = "${s3_bucket_name_internal}"
-                  jsonfile['s3_bucket_name_shared'] = "${s3_bucket_name_shared}"
-                  jsonfile ['year'] = "${Year}"
-                  jsonfile['month'] = "${Month}"
-                  jsonfile['day'] = "${Day}"
-                  writeJSON file: 'input.json', json: jsonfile
+                    def amap = ['something': 'my datas',
+                    'size': 3,
+                    'isEmpty': false]
+                     writeJSON file: 'data.json', json: amap
+                    def read = readJSON file: 'data.json'
+
+                   assert read.something == 'my datas'
+                   assert read.size == 3
+                   assert read.isEmpty == false
+
            }     
          }
        }
-      stage('Invoking step function'){
-        steps{
-          withAWS(roleAccount:'731580992380', role:'Cross-Account-role') {
-         sh 'aws stepfunctions start-execution --state-machine-arn arn:aws:states:ap-south-1:731580992380:stateMachine:MSILStateMachine --input "$(jq -R . input.json --raw-output)" --region ap-south-1'
-     }  
-  }
  }
 }
-}
+  
    
