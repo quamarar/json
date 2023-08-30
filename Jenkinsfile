@@ -69,7 +69,7 @@ environment {
       stage('Adding Parameter2') {
          steps {
            script {
-                  jsonfile =readJSON file: 'input.json', returnPojo: true
+                  def jsonfile =readJSON file: 'input.json', returnPojo: true
                   jsonfile['s3_bucket_name_internal'] = "${s3_bucket_name_internal}"
                   jsonfile['s3_bucket_name_shared'] = "${s3_bucket_name_shared}"
                   jsonfile ['year'] = "${Year}"
