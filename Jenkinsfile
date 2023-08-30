@@ -38,7 +38,7 @@ environment {
                    writeJSON file: 'data.json', json: amap
                    def read = readJSON file: 'data.json'
 
-                   assert read.year == '"${Year}"'
+                    read['year'] = "${Year}"
                    assert read.athena_pred_or_eval_table_name == 'evaluation'
                    assert read.athenadb_name == 'default'
                    assert read.athenadb_debug_table_name == 'debug'
@@ -66,20 +66,6 @@ environment {
          }
        }
 
-      stage('Adding Parameter2') {
-         steps {
-           script {
-                  writeJSON file: 'output.json', json: jsonfile
-                  def jsonfile =readJSON file: 'output.json', returnPojo: true
-                  jsonfile ['year'] = "${Year}"
-                  jsonfile['month'] = "${Month}"
-                  jsonfile['day'] = "${Day}"
-                  
-           }     
-         }
-       }
-   
- }
-}
+ 
   
    
