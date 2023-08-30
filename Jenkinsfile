@@ -33,7 +33,7 @@ environment {
                                 'aws_batch_job_name': 'aws_demo_batch_run','athenadb_metadata_table_name': 'meta','ssm_training_complete_status': '/template-dapm-dev-apsouth1/training_complete_status',
                                 'dq_athena_db': 'poc_monitoring','dq_table': 'dqresults','email_topic_arn': 'arn:aws:sns:ap-south-1:731580992380:model_start_dq_notification',
                                 'training_event_bus_name': 'async_monitoring_event_bus','repository': 'github/maruti-modelops/quality-mlops-defect-corelation-and-prediction.git']
-                                ]  
+                                 
                    writeJSON file: 'data.json', json: amap
                    def read = readJSON file: 'data.json'
 
