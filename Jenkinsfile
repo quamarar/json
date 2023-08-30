@@ -69,11 +69,12 @@ environment {
       stage('Adding Parameter2') {
          steps {
            script {
+                  writeJSON file: 'output.json', json: jsonfile
                   def jsonfile =readJSON file: 'output.json', returnPojo: true
                   jsonfile ['year'] = "${Year}"
                   jsonfile['month'] = "${Month}"
                   jsonfile['day'] = "${Day}"
-                  writeJSON file: 'output.json', json: jsonfile
+                  
            }     
          }
        }
