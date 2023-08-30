@@ -66,7 +66,7 @@ environment {
          }
        }
 
-      stage('Adding Parameter') {
+      stage('Adding Parameter2') {
          steps {
            script {
                   jsonfile =readJSON file: 'input.json', returnPojo: true
